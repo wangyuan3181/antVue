@@ -44,7 +44,7 @@ export default {
       )
     },
     renderIcon (icon) {
-      return icon && <Icon type={icon} /> || null
+      return icon && (<Icon type={icon} />) || null
     },
     renderMenuItem (item) {
       return (
@@ -85,12 +85,12 @@ export default {
         return this.renderItem(o, o.key)
       })
 
-      const title = 
+      const title = (
         <span slot="title">
           { this.renderIcon(item.icon) }
           <span>{ item.title }</span>
         </span>
-      
+      )
 
       if (item.group) {
         return this.renderItemGroup(item)

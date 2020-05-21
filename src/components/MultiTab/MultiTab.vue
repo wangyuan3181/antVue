@@ -77,7 +77,7 @@ export default {
     },
     closeRight (e) {
       const currentIndex = this.fullPathList.indexOf(e)
-      if (currentIndex < this.fullPathList.length - 1) {
+      if (currentIndex < (this.fullPathList.length - 1)) {
         this.fullPathList.forEach((item, index) => {
           if (index > currentIndex) {
             this.remove(item)
@@ -144,7 +144,7 @@ export default {
     })
 
     return (
-      <div class="ant-pro-multi-tab">
+      <div class="ant-pro-multi-tab" style="margin-bottom:12px;">
         <div class="ant-pro-multi-tab-wrapper">
           <a-tabs
             hideAdd

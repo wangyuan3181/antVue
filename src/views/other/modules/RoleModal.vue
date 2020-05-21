@@ -108,7 +108,7 @@ export default {
       this.close()
     },
     onChangeCheck (permission) {
-      permission.indeterminate = !!permission.selected.length && permission.selected.length < permission.actionsOptions.length
+      permission.indeterminate = !!permission.selected.length && (permission.selected.length < permission.actionsOptions.length)
       permission.checkedAll = permission.selected.length === permission.actionsOptions.length
     },
     onChangeCheckAll (e, permission) {

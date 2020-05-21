@@ -63,14 +63,14 @@
 </template>
 
 <script>
-import pick from 'lodash.pick'
 import { getRoleList, getPermissions } from '@/api/manage'
+import { mixinDevice } from '@/utils/mixin'
 import { actionToObject } from '@/utils/permissions'
-import { baseMixin } from '@/store/app-mixin'
+import pick from 'lodash.pick'
 
 export default {
   name: 'RoleList',
-  mixins: [baseMixin],
+  mixins: [mixinDevice],
   components: {},
   data () {
     return {
@@ -130,7 +130,7 @@ export default {
     },
 
     onChangeCheck (permission) {
-      permission.indeterminate = !!permission.selected.length && permission.selected.length < permission.actionsOptions.length
+      permission.indeterminate = !!permission.selected.length && (permission.selected.length < permission.actionsOptions.length)
       permission.checkedAll = permission.selected.length === permission.actionsOptions.length
     },
     onChangeCheckAll (e, permission) {

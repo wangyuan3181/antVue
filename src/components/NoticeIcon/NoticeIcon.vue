@@ -15,13 +15,22 @@
           <a-tab-pane tab="通知" key="1">
             <a-list>
               <a-list-item>
-                <a-list-item-meta title="你收到了 14 份新周报" description="一年前">
+                <a-list-item-meta title="你收到了 14 份新周报" description="3天前">
                   <a-avatar style="background-color: white" slot="avatar" src="https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png"/>
                 </a-list-item-meta>
               </a-list-item>
               <a-list-item>
-                <a-list-item-meta title="你推荐的 曲妮妮 已通过第三轮面试" description="一年前">
+                <a-list-item-meta title="由1条业务需要审核" description="1天前">
                   <a-avatar style="background-color: white" slot="avatar" src="https://gw.alipayobjects.com/zos/rmsportal/OKJXDXrmkNshAMvwtvhu.png"/>
+                </a-list-item-meta>
+              </a-list-item>
+            </a-list>
+          </a-tab-pane>
+          <a-tab-pane tab="待办" key="3">
+            <a-list>
+              <a-list-item>
+                <a-list-item-meta title="你需要处理3条审批" description="一周前">
+                  <a-avatar style="background-color: white" slot="avatar" src="https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png"/>
                 </a-list-item-meta>
               </a-list-item>
               <a-list-item>
@@ -30,12 +39,6 @@
                 </a-list-item-meta>
               </a-list-item>
             </a-list>
-          </a-tab-pane>
-          <a-tab-pane tab="消息" key="2">
-            123
-          </a-tab-pane>
-          <a-tab-pane tab="待办" key="3">
-            123
           </a-tab-pane>
         </a-tabs>
       </a-spin>

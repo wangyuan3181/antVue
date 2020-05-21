@@ -72,11 +72,11 @@ export default {
 
       if (this.maxLength > 0) {
         items = items.slice(0, this.maxLength)
-        items.push(<Avatar size={ this.size } style={ this.excessItemsStyle }>{`+${this.maxLength}`}</Avatar>)
+        items.push((<Avatar size={ this.size } style={ this.excessItemsStyle }>{`+${this.maxLength}`}</Avatar>))
       }
-      const itemList = items.map((item) => 
+      const itemList = items.map((item) => (
         <li class={ classString }>{ item }</li>
-      )
+      ))
       return itemList
     }
   },

@@ -68,12 +68,12 @@ export default (Vue) => {
         }
         const ModalProps = Object.assign({}, modalModel && { model: modalModel } || {}, {
           attrs: Object.assign({}, {
-            ...modalProps.attrs || modalProps
+            ...(modalProps.attrs || modalProps)
           }, {
             visible: this.visible
           }),
           on: Object.assign({}, {
-            ...modalProps.on || modalProps
+            ...(modalProps.on || modalProps)
           }, {
             ok: () => {
               that.handleOk()
@@ -91,10 +91,10 @@ export default (Vue) => {
         const ComponentProps = Object.assign({}, componentModel && { model: componentModel } || {}, {
           ref: '_component',
           attrs: Object.assign({}, {
-            ...componentProps && componentProps.attrs || componentProps
+            ...((componentProps && componentProps.attrs) || componentProps)
           }),
           on: Object.assign({}, {
-            ...componentProps && componentProps.on || componentProps
+            ...((componentProps && componentProps.on) || componentProps)
           })
         })
 

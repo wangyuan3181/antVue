@@ -80,7 +80,7 @@ const article = (options) => {
       ],
       activeUser: Math.ceil(Math.random() * 100000) + 100000,
       newUser: Math.ceil(Math.random() * 1000) + 1000,
-      cover: parseInt(i / 4, 10) % 2 === 0 ? covers[i % 4] : covers[3 - i % 4]
+      cover: parseInt(i / 4, 10) % 2 === 0 ? covers[i % 4] : covers[3 - (i % 4)]
     })
   }
   return builder(data)

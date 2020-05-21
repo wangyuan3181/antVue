@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page-header-index-wide">
     <a-row :gutter="24">
       <a-col :sm="24" :md="12" :xl="6" :style="{ marginBottom: '24px' }">
         <chart-card :loading="loading" title="总销售额" total="￥126,560">
@@ -99,7 +99,7 @@
       </div>
     </a-card>
 
-    <div class="antd-pro-pages-dashboard-analysis-twoColLayout" :class="!isMobile && 'desktop'">
+    <div class="antd-pro-pages-dashboard-analysis-twoColLayout" :class="isDesktop() ? 'desktop' : ''">
       <a-row :gutter="24" type="flex" :style="{ marginTop: '24px' }">
         <a-col :xl="12" :lg="24" :md="24" :sm="24" :xs="24">
           <a-card :loading="loading" :bordered="false" title="线上热门搜索" :style="{ height: '100%' }">
@@ -213,18 +213,8 @@
 
 <script>
 import moment from 'moment'
-import {
-  ChartCard,
-  MiniArea,
-  MiniBar,
-  MiniProgress,
-  RankList,
-  Bar,
-  Trend,
-  NumberInfo,
-  MiniSmoothArea
-} from '@/components'
-import { baseMixin } from '@/store/app-mixin'
+import { ChartCard, MiniArea, MiniBar, MiniProgress, RankList, Bar, Trend, NumberInfo, MiniSmoothArea } from '@/components'
+import { mixinDevice } from '@/utils/mixin'
 
 const barData = []
 const barData2 = []
@@ -295,7 +285,7 @@ for (let i = 0; i < 50; i += 1) {
     keyword: `搜索关键词-${i}`,
     count: Math.floor(Math.random() * 1000),
     range: Math.floor(Math.random() * 100),
-    status: Math.floor(Math.random() * 10 % 2)
+    status: Math.floor((Math.random() * 10) % 2)
   })
 }
 
@@ -327,7 +317,7 @@ const pieData = dv.rows
 
 export default {
   name: 'Analysis',
-  mixins: [baseMixin],
+  mixins: [mixinDevice],
   components: {
     ChartCard,
     MiniArea,

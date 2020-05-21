@@ -1,8 +1,5 @@
 const path = require('path')
 const webpack = require('webpack')
-const GitRevisionPlugin = require('git-revision-webpack-plugin')
-const GitRevision = new GitRevisionPlugin()
-const buildDate = JSON.stringify(new Date().toLocaleString())
 const createThemeColorReplacerPlugin = require('./config/plugin.config')
 
 function resolve(dir) {
@@ -35,12 +32,7 @@ const vueConfig = {
     // webpack plugins
     plugins: [
       // Ignore all locale files of moment.js
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-      new webpack.DefinePlugin({
-        APP_VERSION: `"${require('./package.json').version}"`,
-        GIT_HASH: JSON.stringify(GitRevision.version()),
-        BUILD_DATE: buildDate
-      })
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
     ],
     // if prod, add externals
     externals: isProd ? assetsCDN.externals : {}
@@ -107,13 +99,12 @@ const vueConfig = {
     // }
   },
 
-  publicPath: process.env.NODE_ENV === 'production' ? '/dist' : './',
-  outputDir: 'dist',
-  assetsDir: 'static',
-  productionSourceMap: false, // 去掉打包后的.map 文件
-  lintOnSave: undefined,
+  // disable source map in production
+  productionSourceMap: false,
+  lintOnSave: false,
   // babel-loader no-ignore node_modules/*
   transpileDependencies: []
+
 }
 
 // preview.pro.loacg.com only do not use in your production;
