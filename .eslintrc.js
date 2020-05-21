@@ -30,6 +30,8 @@ module.exports = {
     'vue/no-use-v-if-with-v-for': 0,
     'no-trailing-spaces': 0,
     'vue/no-unused-components': 0,
+    'semi': 0,
+    'no-extra-parens': 0,
     "semi-spacing": [
       2,
       {

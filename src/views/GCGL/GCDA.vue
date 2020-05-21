@@ -1,31 +1,22 @@
 <template>
   <div class="page-header-index-wide page-header-wrapper-grid-content-main">
     <a-row :gutter="24">
+      <!-- 左侧列表 -->
       <a-col :md="24" :lg="8">
         <a-card :bordered="false">
-          工程列表
-    <s-table
-      ref="table"
-      size="default"
-      rowKey="key"
-      :columns="columns"
-      :data="loadData"
-    >
-      <span slot="serial" slot-scope="text, record, index">
-        {{ index + 1 }}
-      </span>
-    </s-table>
-
+          <div class='ProjectList'>
+            <span>工程列表</span>
+          </div>
+          <s-table ref="table" size="default" rowKey="key" :columns="columns" :data="loadData">
+            <span slot="serial" slot-scope="text, record, index">
+              {{ index + 1 }}
+            </span>
+          </s-table>
         </a-card>
       </a-col>
+      <!-- 右侧信息 -->
       <a-col :md="24" :lg="16">
-        <a-card
-          style="width:100%"
-          :bordered="false"
-          :tabList="tabListNoTitle"
-          :activeTabKey="noTitleKey"
-          @tabChange="key => handleTabChange(key, 'noTitleKey')"
-        >
+        <a-card style="width:100%;" :bordered="false" :tabList="tabListNoTitle" :activeTabKey="noTitleKey" @tabChange="key => handleTabChange(key, 'noTitleKey')">
           <article-page v-if="noTitleKey === 'article'"></article-page>
           <app-page v-else-if="noTitleKey === 'app'"></app-page>
           <project-page v-else-if="noTitleKey === 'project'"></project-page>
@@ -48,9 +39,11 @@ export default {
     RouteView,
     PageView,
     STable,
-    AppPage, ArticlePage, ProjectPage
+    AppPage,
+    ArticlePage,
+    ProjectPage
   },
-  data () {
+  data() {
     return {
       tagInputVisible: false,
       tagInputValue: '',
@@ -90,62 +83,66 @@ export default {
           title: '立项日期',
           dataIndex: 'updatedAt',
           sorter: true,
-          customRender: (text) => text.substring(0,10)
+          customRender: text => text.substring(0, 10)
         }
       ],
       loadData: parameter => {
         console.log('loadData.parameter', parameter)
-        return getServiceList(Object.assign(parameter, this.queryParam))
-          .then(res => {
-            return res.result
-          })
+        return getServiceList(Object.assign(parameter, this.queryParam)).then(res => {
+          return res.result
+        })
       },
       options: {
-        alert: { show: true, clear: () => { this.selectedRowKeys = [] } },
+        alert: {
+          show: true,
+          clear: () => {
+            this.selectedRowKeys = []
+          }
+        },
         rowSelection: {
           selectedRowKeys: this.selectedRowKeys,
           onChange: this.onSelectChange
         }
-      },
+      }
     }
   },
-  mounted () {
+  mounted() {
     this.getTeams()
   },
   methods: {
     ...mapGetters(['nickname', 'avatar']),
 
-    getTeams () {
+    getTeams() {
       this.$http.get('/workplace/teams').then(res => {
         this.teams = res.result
         this.teamSpinning = false
       })
     },
 
-    handleTabChange (key, type) {
+    handleTabChange(key, type) {
       this[type] = key
     },
 
-    handleTagClose (removeTag) {
+    handleTagClose(removeTag) {
       const tags = this.tags.filter(tag => tag !== removeTag)
       this.tags = tags
     },
 
-    showTagInput () {
+    showTagInput() {
       this.tagInputVisible = true
       this.$nextTick(() => {
         this.$refs.tagInput.focus()
       })
     },
 
-    handleInputChange (e) {
+    handleInputChange(e) {
       this.tagInputValue = e.target.value
     },
-    handleEdit (record) {
+    handleEdit(record) {
       this.$emit('onEdit', record)
     },
 
-    handleTagInputConfirm () {
+    handleTagInputConfirm() {
       const inputValue = this.tagInputValue
       let tags = this.tags
       if (inputValue && !tags.includes(inputValue)) {
@@ -260,5 +257,17 @@ export default {
     color: rgba(0, 0, 0, 0.85);
     margin-bottom: 12px;
   }
+}
+// 工程列表
+.ProjectList {
+  width: 100%;
+  height: 55px;
+  margin-top: -25px;
+  span {
+    font-weight: 550;
+    font-size: 16px;
+    line-height: 55px;
+  }
+  // background: #000;
 }
 </style>
