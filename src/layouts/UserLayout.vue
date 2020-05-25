@@ -1,19 +1,19 @@
 <template>
-  <div id="userLayout" :class="['user-layout-wrapper', device]">
+  <div id="userLayout" :class="['user-layout-wrapper', isMobile && 'mobile']">
     <div class="container">
       <div class="top">
         <div class="header">
           <a href="/">
             <img src="~@/assets/logo.svg" class="logo" alt="logo">
-            <span class="title">工程管理系统</span>
+            <span class="title">Ant Design</span>
           </a>
         </div>
         <div class="desc">
-          更快
+          Ant Design 是西湖区最具影响力的 Web 设计规范
         </div>
       </div>
 
-      <route-view></route-view>
+      <router-view />
 
       <div class="footer">
         <div class="links">
@@ -22,7 +22,7 @@
           <a href="_self">条款</a>
         </div>
         <div class="copyright">
-          Copyright &copy; 2020 PFT出品
+          Copyright &copy; 2018 vueComponent
         </div>
       </div>
     </div>
@@ -30,16 +30,11 @@
 </template>
 
 <script>
-import RouteView from './RouteView'
-import { mixinDevice } from '@/utils/mixin'
+import { deviceMixin } from '@/store/device-mixin'
 
 export default {
   name: 'UserLayout',
-  components: { RouteView },
-  mixins: [mixinDevice],
-  data () {
-    return {}
-  },
+  mixins: [deviceMixin],
   mounted () {
     document.body.classList.add('userLayout')
   },
@@ -50,7 +45,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  #userLayout.user-layout-wrapper {
+#userLayout.user-layout-wrapper {
     height: 100%;
 
     &.mobile {
@@ -86,7 +81,6 @@ export default {
             display: inline-block;
             line-height: 1;
             vertical-align: middle;
-            margin-top: -12px;
             margin-left: -12px;
             margin-top: -10px;
             opacity: 0.8;

@@ -144,7 +144,7 @@ export default {
     })
 
     return (
-      <div class="ant-pro-multi-tab" style="margin-bottom:12px;">
+      <div class="ant-pro-multi-tab">
         <div class="ant-pro-multi-tab-wrapper">
           <a-tabs
             hideAdd

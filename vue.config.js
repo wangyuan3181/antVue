@@ -1,8 +1,11 @@
 const path = require('path')
 const webpack = require('webpack')
+const GitRevisionPlugin = require('git-revision-webpack-plugin')
+const GitRevision = new GitRevisionPlugin()
+const buildDate = JSON.stringify(new Date().toLocaleString())
 const createThemeColorReplacerPlugin = require('./config/plugin.config')
 
-function resolve(dir) {
+function resolve (dir) {
   return path.join(__dirname, dir)
 }
 
@@ -32,7 +35,12 @@ const vueConfig = {
     // webpack plugins
     plugins: [
       // Ignore all locale files of moment.js
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      new webpack.DefinePlugin({
+        APP_VERSION: `"${require('./package.json').version}"`,
+        GIT_HASH: JSON.stringify(GitRevision.version()),
+        BUILD_DATE: buildDate
+      })
     ],
     // if prod, add externals
     externals: isProd ? assetsCDN.externals : {}
@@ -85,9 +93,7 @@ const vueConfig = {
   },
 
   devServer: {
-    hot: true, // 热更新
-    hotOnly: true,
-    open: true,
+    // development server port 8000
     port: 8000
     // If you want to turn on the proxy, please remove the mockjs /src/main.jsL11
     // proxy: {
@@ -101,10 +107,9 @@ const vueConfig = {
 
   // disable source map in production
   productionSourceMap: false,
-  lintOnSave: false,
+  lintOnSave: undefined,
   // babel-loader no-ignore node_modules/*
   transpileDependencies: []
-
 }
 
 // preview.pro.loacg.com only do not use in your production;

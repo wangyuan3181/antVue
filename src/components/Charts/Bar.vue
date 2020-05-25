@@ -14,8 +14,6 @@
 </template>
 
 <script>
-
-
 export default {
   name: 'Bar',
   props: {

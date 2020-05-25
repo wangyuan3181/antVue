@@ -1,55 +1,75 @@
 module.exports = {
-  root: true, // 根目录的配置文件， 编辑器会由当前目录向上查找， 如果找到 `roor = true`的文件， 则不再查找
+  root: true,
   env: {
-    browser: true,
-    node: true,
-    es6: true,
-    jquery: true
+    node: true
   },
-  extends: [
-    // "@vue/prettier",
-    "plugin:vue/essential",
-    // "plugin:vue/recommended",
-    "eslint:recommended"
+  'extends': [
+    'plugin:vue/strongly-recommended',
+    '@vue/standard'
   ],
   rules: {
-    "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
-    "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
-    "no-extra-parens": 2, //开启禁止非必要的括号
-    "no-extra-semi": 2, //开启禁止多余的冒号
-    "no-irregular-whitespace": 2, //开启不能有不规则的空格
-    "no-empty": 0, // 关闭不能为空的代码块规则
-    "no-unused-vars": 0, // 关闭参数没用到，或者引用没使用报错
-    "no-console": 0, // 关闭 打包时对console的限制
-    semi: [2, "never"], // 无分号
-    "no-unused-labels": 0,
-    "vue/no-parsing-error": 0,
-    "vue/require-component-is": 0,
-    "no-constant-condition": 0,
-    "vue/no-side-effects-in-computed-properties": 0,
-    'vue/no-use-v-if-with-v-for': 0,
-    'no-trailing-spaces': 0,
-    'vue/no-unused-components': 0,
-    'semi': 0,
-    'no-extra-parens': 0,
-    "semi-spacing": [
+    'no-console': 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'generator-star-spacing': 'off',
+    'no-mixed-operators': 0,
+    'vue/max-attributes-per-line': [
       2,
       {
-        before: false,
-        after: true
+        'singleline': 5,
+        'multiline': {
+          'max': 1,
+          'allowFirstLine': false
+        }
       }
     ],
-    quotes: [
-      // 单引号
+    'vue/attribute-hyphenation': 0,
+    'vue/html-self-closing': 0,
+    'vue/component-name-in-template-casing': 0,
+    'vue/html-closing-bracket-spacing': 0,
+    'vue/singleline-html-element-content-newline': 0,
+    'vue/no-unused-components': 0,
+    'vue/multiline-html-element-content-newline': 0,
+    'vue/no-use-v-if-with-v-for': 0,
+    'vue/html-closing-bracket-newline': 0,
+    'vue/no-parsing-error': 0,
+    'no-tabs': 0,
+    'quotes': [
       2,
-      "single",
+      'single',
       {
-        avoidEscape: true,
-        allowTemplateLiterals: true
+        'avoidEscape': true,
+        'allowTemplateLiterals': true
       }
-    ]
+    ],
+    'semi': [
+      2,
+      'never',
+      {
+        'beforeStatementContinuationChars': 'never'
+      }
+    ],
+    'no-delete-var': 2,
+    'prefer-const': [
+      2,
+      {
+        'ignoreReadBeforeAssign': false
+      }
+    ],
+    'template-curly-spacing': 'off',
+    'indent': 'off'
   },
   parserOptions: {
-    parser: "babel-eslint"
-  }
-};
+    parser: 'babel-eslint'
+  },
+  overrides: [
+    {
+      files: [
+        '**/__tests__/*.{j,t}s?(x)',
+        '**/tests/unit/**/*.spec.{j,t}s?(x)'
+      ],
+      env: {
+        jest: true
+      }
+    }
+  ]
+}
