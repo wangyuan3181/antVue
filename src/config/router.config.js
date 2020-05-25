@@ -30,7 +30,7 @@ export const asyncRouterMap = [
         redirect: '/dashboard/workplace',
         component: RouteView,
         meta: {
-          title: 'menu.dashboard',
+          title: '仪表盘',
           keepAlive: true,
           icon: bxAnaalyse,
           permission: ['dashboard']
@@ -40,26 +40,26 @@ export const asyncRouterMap = [
             name: 'Analysis',
             component: () => import('@/views/dashboard/Analysis'),
             meta: {
-              title: 'menu.dashboard.analysis',
+              title: '分析页',
               keepAlive: false,
               permission: ['dashboard']
             }
           },
           // 外部链接
-          {
-            path: 'https://www.baidu.com/',
-            name: 'Monitor',
-            meta: {
-              title: 'menu.dashboard.monitor',
-              target: '_blank'
-            }
-          },
+          // {
+          //   path: 'https://www.baidu.com/',
+          //   name: 'Monitor',
+          //   meta: {
+          //     title: '百度',
+          //     target: '_blank'
+          //   }
+          // },
           {
             path: '/dashboard/workplace',
             name: 'Workplace',
             component: () => import('@/views/dashboard/Workplace'),
             meta: {
-              title: 'menu.dashboard.workplace',
+              title: '工作台',
               keepAlive: true,
               permission: ['dashboard']
             }
