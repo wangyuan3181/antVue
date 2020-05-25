@@ -23,24 +23,14 @@
           <a-row>
             <a-col :lg="8" :md="10" :sm="10" :xs="24">
               <a-form-item :wrapper-col="{ sm: { span: 16 }, xs: { span: 24 } }" label="作者">
-                <a-select
-                  style="max-width: 200px; width: 100%;"
-                  mode="multiple"
-                  placeholder="不限"
-                  v-decorator="['author']"
-                  @change="handleChange"
-                >
+                <a-select style="max-width: 200px; width: 100%;" mode="multiple" placeholder="不限" v-decorator="['author']" @change="handleChange">
                   <a-select-option value="lisa">王昭君</a-select-option>
                 </a-select>
               </a-form-item>
             </a-col>
             <a-col :lg="8" :md="10" :sm="10" :xs="24">
               <a-form-item :wrapper-col="{ sm: { span: 16 }, xs: { span: 24 } }" label="好评度">
-                <a-select
-                  style="max-width: 200px; width: 100%;"
-                  placeholder="不限"
-                  v-decorator="['rate']"
-                >
+                <a-select style="max-width: 200px; width: 100%;" placeholder="不限" v-decorator="['rate']">
                   <a-select-option value="good">优秀</a-select-option>
                   <a-select-option value="normal">普通</a-select-option>
                 </a-select>
@@ -65,12 +55,7 @@
               <span>{{ item.updatedAt | fromNow }}</span>
               <div class="avatarList">
                 <avatar-list size="mini">
-                  <avatar-list-item
-                    v-for="(member, i) in item.members"
-                    :key="`${item.id}-avatar-${i}`"
-                    :src="member.avatar"
-                    :tips="member.name"
-                  />
+                  <avatar-list-item v-for="(member, i) in item.members" :key="`${item.id}-avatar-${i}`" :src="member.avatar" :tips="member.name" />
                 </avatar-list>
               </div>
             </div>
@@ -96,7 +81,7 @@ export default {
     TagSelectOption,
     StandardFormRow
   },
-  data () {
+  data() {
     return {
       data: [],
       form: this.$form.createForm(this),
@@ -104,18 +89,18 @@ export default {
     }
   },
   filters: {
-    fromNow (date) {
+    fromNow(date) {
       return moment(date).fromNow()
     }
   },
-  mounted () {
+  mounted() {
     this.getList()
   },
   methods: {
-    handleChange (value) {
+    handleChange(value) {
       console.log(`selected ${value}`)
     },
-    getList () {
+    getList() {
       this.$http.get('/list/article', { params: { count: 8 } }).then(res => {
         console.log('res', res)
         this.data = res.result
@@ -156,7 +141,7 @@ export default {
 
     > span {
       flex: 1 1;
-      color: rgba(0,0,0,.45);
+      color: rgba(0, 0, 0, 0.45);
       font-size: 12px;
     }
 

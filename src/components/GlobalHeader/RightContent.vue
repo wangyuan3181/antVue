@@ -33,21 +33,21 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       showMenu: true,
       currentUser: {}
     }
   },
   computed: {
-    wrpCls () {
+    wrpCls() {
       return {
         'ant-pro-global-header-index-right': true,
-        [`ant-pro-global-header-index-${(this.topMenu && this.isMobile) && this.theme || 'light'}`]: true
+        [`ant-pro-global-header-index-${(this.topMenu && this.isMobile && this.theme) || 'light'}`]: true
       }
     }
   },
-  mounted () {
+  mounted() {
     setTimeout(() => {
       this.currentUser = {
         name: 'Serati Ma'

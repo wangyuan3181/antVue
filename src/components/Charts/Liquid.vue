@@ -1,22 +1,11 @@
 <template>
   <div>
-    <v-chart
-      :forceFit="true"
-      :height="height"
-      :width="width"
-      :data="data"
-      :scale="scale"
-      :padding="0">
+    <v-chart :forceFit="true" :height="height" :width="width" :data="data" :scale="scale" :padding="0">
       <v-tooltip />
-      <v-interval
-        :shape="['liquid-fill-gauge']"
-        position="transfer*value"
-        color=""
-        :v-style="{
+      <v-interval :shape="['liquid-fill-gauge']" position="transfer*value" color="" :v-style="{
           lineWidth: 10,
           opacity: 0.75
-        }"
-        :tooltip="[
+        }" :tooltip="[
           'transfer*value',
           (transfer, value) => {
             return {
@@ -24,24 +13,15 @@
               value,
             };
           },
-        ]"
-      ></v-interval>
-      <v-guide
-        v-for="(row, index) in data"
-        :key="index"
-        type="text"
-        :top="true"
-        :position="{
+        ]"></v-interval>
+      <v-guide v-for="(row, index) in data" :key="index" type="text" :top="true" :position="{
           gender: row.transfer,
           value: 45
-        }"
-        :content="row.value + '%'"
-        :v-style="{
+        }" :content="row.value + '%'" :v-style="{
           fontSize: 100,
           textAlign: 'center',
           opacity: 0.75,
-        }"
-      />
+        }" />
     </v-chart>
   </div>
 </template>
@@ -63,5 +43,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

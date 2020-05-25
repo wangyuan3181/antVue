@@ -1,30 +1,14 @@
 <template>
 
-  <a-modal
-    title="修改头像"
-    :visible="visible"
-    :maskClosable="false"
-    :confirmLoading="confirmLoading"
-    :width="800"
-    :footer="null"
-    @cancel="cancelHandel">
+  <a-modal title="修改头像" :visible="visible" :maskClosable="false" :confirmLoading="confirmLoading" :width="800" :footer="null" @cancel="cancelHandel">
     <a-row>
       <a-col :xs="24" :md="12" :style="{height: '350px'}">
-        <vue-cropper
-          ref="cropper"
-          :img="options.img"
-          :info="true"
-          :autoCrop="options.autoCrop"
-          :autoCropWidth="options.autoCropWidth"
-          :autoCropHeight="options.autoCropHeight"
-          :fixedBox="options.fixedBox"
-          @realTime="realTime"
-        >
+        <vue-cropper ref="cropper" :img="options.img" :info="true" :autoCrop="options.autoCrop" :autoCropWidth="options.autoCropWidth" :autoCropHeight="options.autoCropHeight" :fixedBox="options.fixedBox" @realTime="realTime">
         </vue-cropper>
       </a-col>
       <a-col :xs="24" :md="12" :style="{height: '350px'}">
         <div class="avatar-upload-preview">
-          <img :src="previews.url" :style="previews.img"/>
+          <img :src="previews.url" :style="previews.img" />
         </div>
       </a-col>
     </a-row>
@@ -36,16 +20,16 @@
         </a-upload>
       </a-col>
       <a-col :lg="{span: 1, offset: 2}" :md="2">
-        <a-button icon="plus" @click="changeScale(1)"/>
+        <a-button icon="plus" @click="changeScale(1)" />
       </a-col>
       <a-col :lg="{span: 1, offset: 1}" :md="2">
-        <a-button icon="minus" @click="changeScale(-1)"/>
+        <a-button icon="minus" @click="changeScale(-1)" />
       </a-col>
       <a-col :lg="{span: 1, offset: 1}" :md="2">
-        <a-button icon="undo" @click="rotateLeft"/>
+        <a-button icon="undo" @click="rotateLeft" />
       </a-col>
       <a-col :lg="{span: 1, offset: 1}" :md="2">
-        <a-button icon="redo" @click="rotateRight"/>
+        <a-button icon="redo" @click="rotateRight" />
       </a-col>
       <a-col :lg="{span: 2, offset: 6}" :md="2">
         <a-button type="primary" @click="finish('blob')">保存</a-button>
@@ -56,7 +40,7 @@
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
       visible: false,
       id: null,
@@ -75,29 +59,29 @@ export default {
     }
   },
   methods: {
-    edit (id) {
+    edit(id) {
       this.visible = true
       this.id = id
       /* 获取原始头像 */
     },
-    close () {
+    close() {
       this.id = null
       this.visible = false
     },
-    cancelHandel () {
+    cancelHandel() {
       this.close()
     },
-    changeScale (num) {
+    changeScale(num) {
       num = num || 1
       this.$refs.cropper.changeScale(num)
     },
-    rotateLeft () {
+    rotateLeft() {
       this.$refs.cropper.rotateLeft()
     },
-    rotateRight () {
+    rotateRight() {
       this.$refs.cropper.rotateRight()
     },
-    beforeUpload (file) {
+    beforeUpload(file) {
       const reader = new FileReader()
       // 把Array Buffer转化为blob 如果是base64不需要
       // 转化为base64
@@ -112,19 +96,24 @@ export default {
     },
 
     // 上传图片（点击上传按钮）
-    finish (type) {
+    finish(type) {
       console.log('finish')
       const _this = this
       const formData = new FormData()
       // 输出
       if (type === 'blob') {
-        this.$refs.cropper.getCropBlob((data) => {
+        this.$refs.cropper.getCropBlob(data => {
           const img = window.URL.createObjectURL(data)
           this.model = true
           this.modelSrc = img
           formData.append('file', data, this.fileName)
-          this.$http.post('https://www.mocky.io/v2/5cc8019d300000980a055e76', formData, { contentType: false, processData: false, headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
-            .then((response) => {
+          this.$http
+            .post('https://www.mocky.io/v2/5cc8019d300000980a055e76', formData, {
+              contentType: false,
+              processData: false,
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            })
+            .then(response => {
               console.log('upload response:', response)
               // var res = response.data
               // if (response.status === 'done') {
@@ -140,13 +129,13 @@ export default {
             })
         })
       } else {
-        this.$refs.cropper.getCropData((data) => {
+        this.$refs.cropper.getCropData(data => {
           this.model = true
           this.modelSrc = data
         })
       }
     },
-    okHandel () {
+    okHandel() {
       const vm = this
 
       vm.confirmLoading = true
@@ -157,7 +146,7 @@ export default {
       }, 2000)
     },
 
-    realTime (data) {
+    realTime(data) {
       this.previews = data
     }
   }
@@ -165,20 +154,19 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.avatar-upload-preview {
+  position: absolute;
+  top: 50%;
+  transform: translate(50%, -50%);
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  box-shadow: 0 0 4px #ccc;
+  overflow: hidden;
 
-  .avatar-upload-preview {
-    position: absolute;
-    top: 50%;
-    transform: translate(50%, -50%);
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    box-shadow: 0 0 4px #ccc;
-    overflow: hidden;
-
-    img {
-      width: 100%;
-      height: 100%;
-    }
+  img {
+    width: 100%;
+    height: 100%;
   }
+}
 </style>

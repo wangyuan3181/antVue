@@ -43,11 +43,7 @@
                   {{ permission.name }}：
                 </a-col>
                 <a-col :xl="20" :lg="24">
-                  <a-checkbox
-                    v-if="permission.actionsOptions.length > 0"
-                    :indeterminate="permission.indeterminate"
-                    :checked="permission.checkedAll"
-                    @change="onChangeCheckAll($event, permission)">
+                  <a-checkbox v-if="permission.actionsOptions.length > 0" :indeterminate="permission.indeterminate" :checked="permission.checkedAll" @change="onChangeCheckAll($event, permission)">
                     全选
                   </a-checkbox>
                   <a-checkbox-group :options="permission.actionsOptions" v-model="permission.selected" @change="onChangeCheck(permission)" />
@@ -72,7 +68,7 @@ export default {
   name: 'RoleList',
   mixins: [baseMixin],
   components: {},
-  data () {
+  data() {
     return {
       form: this.$form.createForm(this),
       mdl: {},
@@ -81,8 +77,8 @@ export default {
       permissions: []
     }
   },
-  created () {
-    getRoleList().then((res) => {
+  created() {
+    getRoleList().then(res => {
       this.roles = res.result.data
       this.roles.push({
         id: '-1',
@@ -94,15 +90,15 @@ export default {
     this.loadPermissions()
   },
   methods: {
-    callback (val) {
+    callback(val) {
       console.log(val)
     },
 
-    add () {
+    add() {
       this.edit({ id: 0 })
     },
 
-    edit (record) {
+    edit(record) {
       this.mdl = Object.assign({}, record)
       // 有权限表，处理勾选
       if (this.mdl.permissions && this.permissions) {
@@ -129,11 +125,12 @@ export default {
       console.log('this.mdl', this.mdl)
     },
 
-    onChangeCheck (permission) {
-      permission.indeterminate = !!permission.selected.length && (permission.selected.length < permission.actionsOptions.length)
+    onChangeCheck(permission) {
+      permission.indeterminate =
+        !!permission.selected.length && permission.selected.length < permission.actionsOptions.length
       permission.checkedAll = permission.selected.length === permission.actionsOptions.length
     },
-    onChangeCheckAll (e, permission) {
+    onChangeCheckAll(e, permission) {
       console.log('permission:', permission)
 
       Object.assign(permission, {
@@ -142,7 +139,7 @@ export default {
         checkedAll: e.target.checked
       })
     },
-    loadPermissions () {
+    loadPermissions() {
       getPermissions().then(res => {
         const result = res.result
         this.permissions = result.map(permission => {
@@ -165,5 +162,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

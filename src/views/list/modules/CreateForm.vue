@@ -1,12 +1,5 @@
 <template>
-  <a-modal
-    title="新建规则"
-    :width="640"
-    :visible="visible"
-    :confirmLoading="loading"
-    @ok="() => { $emit('ok') }"
-    @cancel="() => { $emit('cancel') }"
-  >
+  <a-modal title="新建规则" :width="640" :visible="visible" :confirmLoading="loading" @ok="() => { $emit('ok') }" @cancel="() => { $emit('cancel') }">
     <a-spin :spinning="loading">
       <a-form :form="form" v-bind="formLayout">
         <!-- 检查是否有 id 并且大于0，大于0是修改。其他是新增，新增不显示主键ID -->
@@ -42,7 +35,7 @@ export default {
       default: () => null
     }
   },
-  data () {
+  data() {
     this.formLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -57,7 +50,7 @@ export default {
       form: this.$form.createForm(this)
     }
   },
-  created () {
+  created() {
     console.log('custom modal created')
 
     // 防止表单未注册

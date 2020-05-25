@@ -1,11 +1,5 @@
 <template>
-  <a-list
-    size="large"
-    rowKey="id"
-    :loading="loading"
-    itemLayout="vertical"
-    :dataSource="data"
-  >
+  <a-list size="large" rowKey="id" :loading="loading" itemLayout="vertical" :dataSource="data">
     <a-list-item :key="item.id" slot="renderItem" slot-scope="item">
       <template slot="actions">
         <icon-text type="star-o" :text="item.star" />
@@ -40,36 +34,38 @@ export default {
     IconText,
     ArticleListContent
   },
-  data () {
+  data() {
     return {
       loading: true,
       loadingMore: false,
       data: []
     }
   },
-  mounted () {
+  mounted() {
     this.getList()
   },
   methods: {
-    getList () {
+    getList() {
       this.$http.get('/list/article').then(res => {
         console.log('res', res)
         this.data = res.result
         this.loading = false
       })
     },
-    loadMore () {
+    loadMore() {
       this.loadingMore = true
-      this.$http.get('/list/article').then(res => {
-        this.data = this.data.concat(res.result)
-      }).finally(() => {
-        this.loadingMore = false
-      })
+      this.$http
+        .get('/list/article')
+        .then(res => {
+          this.data = this.data.concat(res.result)
+        })
+        .finally(() => {
+          this.loadingMore = false
+        })
     }
   }
 }
 </script>
 
 <style scoped>
-
 </style>

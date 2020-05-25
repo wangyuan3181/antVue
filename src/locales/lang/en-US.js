@@ -9,7 +9,7 @@ const components = {
 
 const locale = {
   'message': '-',
-  'menu.home': 'Home',
+  'menu.home': 'Home1',
   'menu.dashboard': 'Dashboard',
   'menu.dashboard.analysis': 'Analysis',
   'menu.dashboard.monitor': 'Monitor',

@@ -81,7 +81,7 @@
                 <bar :data="barData" title="销售额排行" />
               </a-col>
               <a-col :xl="8" :lg="12" :md="12" :sm="24" :xs="24">
-                <rank-list title="门店销售排行榜" :list="rankList"/>
+                <rank-list title="门店销售排行榜" :list="rankList" />
               </a-col>
             </a-row>
           </a-tab-pane>
@@ -91,7 +91,7 @@
                 <bar :data="barData2" title="销售额趋势" />
               </a-col>
               <a-col :xl="8" :lg="12" :md="12" :sm="24" :xs="24">
-                <rank-list title="门店销售排行榜" :list="rankList"/>
+                <rank-list title="门店销售排行榜" :list="rankList" />
               </a-col>
             </a-row>
           </a-tab-pane>
@@ -147,13 +147,7 @@
               </a-col>
             </a-row>
             <div class="ant-table-wrapper">
-              <a-table
-                row-key="index"
-                size="small"
-                :columns="searchTableColumns"
-                :dataSource="searchData"
-                :pagination="{ pageSize: 5 }"
-              >
+              <a-table row-key="index" size="small" :columns="searchTableColumns" :dataSource="searchData" :pagination="{ pageSize: 5 }">
                 <span slot="range" slot-scope="text, record">
                   <trend :flag="record.status === 0 ? 'up' : 'down'">
                     {{ text }}%
@@ -197,7 +191,7 @@
                   <v-tooltip :showTitle="false" dataKey="item*percent" />
                   <v-axis />
                   <!-- position="right" :offsetX="-140" -->
-                  <v-legend dataKey="item"/>
+                  <v-legend dataKey="item" />
                   <v-pie position="percent" color="item" :vStyle="pieStyle" />
                   <v-coord type="theta" :radius="0.75" :innerRadius="0.6" />
                 </v-chart>
@@ -250,7 +244,9 @@ for (let i = 0; i < 7; i++) {
 const searchUserData = []
 for (let i = 0; i < 7; i++) {
   searchUserData.push({
-    x: moment().add(i, 'days').format('YYYY-MM-DD'),
+    x: moment()
+      .add(i, 'days')
+      .format('YYYY-MM-DD'),
     y: Math.ceil(Math.random() * 10)
   })
 }
@@ -264,7 +260,8 @@ const searchUserScale = [
     alias: '用户数',
     min: 0,
     max: 10
-  }]
+  }
+]
 
 const searchTableColumns = [
   {
@@ -310,11 +307,13 @@ const sourceData = [
   { item: '其他', count: 7.8 }
 ]
 
-const pieScale = [{
-  dataKey: 'percent',
-  min: 0,
-  formatter: '.0%'
-}]
+const pieScale = [
+  {
+    dataKey: 'percent',
+    min: 0,
+    formatter: '.0%'
+  }
+]
 
 const dv = new DataSet.View().source(sourceData)
 dv.transform({
@@ -339,7 +338,7 @@ export default {
     NumberInfo,
     MiniSmoothArea
   },
-  data () {
+  data() {
     return {
       loading: true,
       rankList,
@@ -363,7 +362,7 @@ export default {
       }
     }
   },
-  created () {
+  created() {
     setTimeout(() => {
       this.loading = !this.loading
     }, 1000)
@@ -372,46 +371,46 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .extra-wrapper {
-    line-height: 55px;
-    padding-right: 24px;
+.extra-wrapper {
+  line-height: 55px;
+  padding-right: 24px;
 
-    .extra-item {
-      display: inline-block;
-      margin-right: 24px;
+  .extra-item {
+    display: inline-block;
+    margin-right: 24px;
 
-      a {
-        margin-left: 24px;
-      }
+    a {
+      margin-left: 24px;
     }
   }
+}
 
-  .antd-pro-pages-dashboard-analysis-twoColLayout {
+.antd-pro-pages-dashboard-analysis-twoColLayout {
+  position: relative;
+  display: flex;
+  display: block;
+  flex-flow: row wrap;
+}
+
+.antd-pro-pages-dashboard-analysis-salesCard {
+  height: calc(100% - 24px);
+  /deep/ .ant-card-head {
     position: relative;
-    display: flex;
-    display: block;
-    flex-flow: row wrap;
   }
+}
 
-  .antd-pro-pages-dashboard-analysis-salesCard {
-    height: calc(100% - 24px);
-    /deep/ .ant-card-head {
-      position: relative;
-    }
+.dashboard-analysis-iconGroup {
+  i {
+    margin-left: 16px;
+    color: rgba(0, 0, 0, 0.45);
+    cursor: pointer;
+    transition: color 0.32s;
+    color: black;
   }
-
-  .dashboard-analysis-iconGroup {
-    i {
-      margin-left: 16px;
-      color: rgba(0,0,0,.45);
-      cursor: pointer;
-      transition: color .32s;
-      color: black;
-    }
-  }
-  .analysis-salesTypeRadio {
-    position: absolute;
-    right: 54px;
-    bottom: 12px;
-  }
+}
+.analysis-salesTypeRadio {
+  position: absolute;
+  right: 54px;
+  bottom: 12px;
+}
 </style>

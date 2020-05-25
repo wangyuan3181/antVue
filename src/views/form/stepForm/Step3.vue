@@ -32,33 +32,33 @@
 <script>
 export default {
   name: 'Step3',
-  data () {
+  data() {
     return {
       loading: false
     }
   },
   methods: {
-    finish () {
+    finish() {
       this.$emit('finish')
     },
-    toOrderList () {
+    toOrderList() {
       this.$router.push('/list/table-list')
     }
   }
 }
 </script>
 <style lang="less" scoped>
-  .information {
-    line-height: 22px;
+.information {
+  line-height: 22px;
 
-    .ant-row:not(:last-child) {
-      margin-bottom: 24px;
-    }
+  .ant-row:not(:last-child) {
+    margin-bottom: 24px;
   }
-  .money {
-    font-family: "Helvetica Neue",sans-serif;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 14px;
-  }
+}
+.money {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 14px;
+}
 </style>
