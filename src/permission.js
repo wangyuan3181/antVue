@@ -17,14 +17,14 @@ import {
 
 NProgress.configure({
   showSpinner: false
-}) // NProgress Configuration
+}) // NProgress 配置
 
-const whiteList = ['login', 'register', 'registerResult'] // no redirect whitelist
+const whiteList = ['login', 'register', 'registerResult'] // 没有重定向白名单
 const loginRoutePath = '/user/login'
 const defaultRoutePath = '/dashboard/workplace'
 
 router.beforeEach((to, from, next) => {
-  NProgress.start() // start progress bar
+  NProgress.start() // 开始进度条
   to.meta && (typeof to.meta.title !== 'undefined' && setDocumentTitle(`${i18nRender(to.meta.title)} - ${domTitle}`))
   /* has token */
   if (storage.get(ACCESS_TOKEN)) {
@@ -34,14 +34,14 @@ router.beforeEach((to, from, next) => {
       })
       NProgress.done()
     } else {
-      // check login user.roles is null
+      // 检查登录用户。角色为空
       if (store.getters.roles.length === 0) {
-        // request login userInfo
+        // 请求登录用户信息
         store
           .dispatch('GetInfo')
           .then(res => {
             const roles = res.result && res.result.role
-            // generate dynamic router
+            // 生成动态的路由器
             store.dispatch('GenerateRoutes', {
               roles
             }).then(() => {
@@ -51,7 +51,7 @@ router.beforeEach((to, from, next) => {
               // 请求带有 redirect 重定向时，登录自动重定向到该地址
               const redirect = decodeURIComponent(from.query.redirect || to.path)
               if (to.path === redirect) {
-                // set the replace: true so the navigation will not leave a history record
+                // 设置replace: true，这样导航就不会留下历史记录
                 next({
                   ...to,
                   replace: true

@@ -20,12 +20,11 @@ export const asyncRouterMap = [
     name: 'index',
     component: BasicLayout,
     meta: {
-      title: 'menu.home'
+      // title: 'menu.home'
+      title: '首页'
     },
     redirect: '/dashboard/workplace',
-    children: [
-      // dashboard
-      {
+    children: [{
         path: '/dashboard',
         name: 'dashboard',
         redirect: '/dashboard/workplace',

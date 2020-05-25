@@ -26,7 +26,6 @@
         </div>
       </div>
     </template>
-
     <div>
       <a-row :gutter="24">
         <a-col :xl="16" :lg="24" :md="24" :sm="24" :xs="24">

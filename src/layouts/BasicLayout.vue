@@ -1,12 +1,17 @@
 <template>
-  <pro-layout title="Ant Design Pro" :menus="menus" :collapsed="collapsed" :mediaQuery="query" :isMobile="isMobile" :handleMediaQuery="handleMediaQuery" :handleCollapse="handleCollapse" :logo="logoRender" :i18nRender="i18nRender" v-bind="settings">
+  <!-- 基础结构 -->
+  <pro-layout title="工程管理系统" :menus="menus" :collapsed="collapsed" :mediaQuery="query" :isMobile="isMobile" :handleMediaQuery="handleMediaQuery" :handleCollapse="handleCollapse" :logo="logoRender" :i18nRender="i18nRender" v-bind="settings">
+    <!-- 设置漂浮框 -->
     <setting-drawer :settings="settings" @change="handleSettingChange" />
+    <!-- 头部右侧头像 -->
     <template v-slot:rightContentRender>
       <right-content :top-menu="settings.layout === 'topmenu'" :theme="settings.theme" />
     </template>
+    <!-- 底部 -->
     <template v-slot:footerRender>
       <global-footer />
     </template>
+    <!-- 主体内容 -->
     <router-view />
   </pro-layout>
 </template>
@@ -52,7 +57,6 @@ export default {
       },
       // 媒体查询
       query: {},
-
       // 是否手机模式
       isMobile: false
     }
