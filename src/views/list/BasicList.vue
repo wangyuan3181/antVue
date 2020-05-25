@@ -1,5 +1,5 @@
 <template>
-  <page-header-wrapper>
+  <div>
     <a-card :bordered="false">
       <a-row>
         <a-col :sm="8" :xs="24">
@@ -13,7 +13,6 @@
         </a-col>
       </a-row>
     </a-card>
-
     <a-card style="margin-top: 24px" :bordered="false" title="标准列表">
 
       <div slot="extra">
@@ -64,7 +63,7 @@
         </a-list-item>
       </a-list>
     </a-card>
-  </page-header-wrapper>
+  </div>
 </template>
 
 <script>

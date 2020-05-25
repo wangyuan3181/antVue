@@ -1,12 +1,11 @@
 <template>
-  <page-header-wrapper content="高级表单常见于一次性输入和提交大批量数据的场景">
+  <div>
     <a-card class="card" title="仓库管理" :bordered="false">
       <repository-form ref="repository" :showSubmit="false" />
     </a-card>
     <a-card class="card" title="任务管理" :bordered="false">
       <task-form ref="task" :showSubmit="false" />
     </a-card>
-
     <!-- table -->
     <a-card>
       <a-table :columns="columns" :dataSource="data" :pagination="false" :loading="memberLoading">
@@ -40,8 +39,7 @@
       </a-table>
       <a-button style="width: 100%; margin-top: 16px; margin-bottom: 8px" type="dashed" icon="plus" @click="newMember">新增成员</a-button>
     </a-card>
-
-    <!-- fixed footer toolbar -->
+    <!-- 固定的页脚工具栏 -->
     <footer-tool-bar :is-mobile="isMobile" :collapsed="sideCollapsed">
       <span class="popover-wrapper">
         <a-popover title="表单校验信息" overlayClassName="antd-pro-pages-forms-style-errorPopover" trigger="click" :getPopupContainer="trigger => trigger.parentNode">
@@ -59,7 +57,7 @@
       </span>
       <a-button type="primary" @click="validate" :loading="loading">提交</a-button>
     </footer-tool-bar>
-  </page-header-wrapper>
+  </div>
 </template>
 
 <script>

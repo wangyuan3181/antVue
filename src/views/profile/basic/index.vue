@@ -1,5 +1,5 @@
 <template>
-  <page-header-wrapper>
+  <div>
     <a-card :bordered="false">
       <a-descriptions title="退款申请">
         <a-descriptions-item label="取货单号">1000000000</a-descriptions-item>
@@ -31,7 +31,7 @@
 
       </s-table>
     </a-card>
-  </page-header-wrapper>
+  </div>
 </template>
 
 <script>

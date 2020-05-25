@@ -335,8 +335,6 @@ export default {
   .detail-layout {
     margin-left: unset;
   }
-  .text {
-  }
   .status-list {
     text-align: left;
   }

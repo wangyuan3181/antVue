@@ -1,5 +1,5 @@
 <template>
-  <page-header-wrapper content="表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。">
+  <div>
     <a-card :body-style="{padding: '24px 32px'}" :bordered="false">
       <a-form @submit="handleSubmit" :form="form">
         <a-form-item label="标题" :labelCol="{lg: {span: 7}, sm: {span: 7}}" :wrapperCol="{lg: {span: 10}, sm: {span: 17} }">
@@ -59,7 +59,7 @@
         </a-form-item>
       </a-form>
     </a-card>
-  </page-header-wrapper>
+  </div>
 </template>
 
 <script>
