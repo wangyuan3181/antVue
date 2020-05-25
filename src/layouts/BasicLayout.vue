@@ -11,6 +11,8 @@
     <template v-slot:footerRender>
       <global-footer />
     </template>
+    <!-- 主题内容title -->
+
     <!-- 主体内容 -->
     <router-view />
   </pro-layout>
@@ -24,7 +26,7 @@ import { SIDEBAR_TYPE, TOGGLE_MOBILE_TYPE } from '@/store/mutation-types'
 
 import RightContent from '@/components/GlobalHeader/RightContent'
 import GlobalFooter from '@/components/GlobalFooter'
-import LogoSvg from '../assets/logo.svg?inline'
+import LogoSvg from '@/assets/icons/logo.svg?inline'
 
 export default {
   name: 'BasicLayout',
