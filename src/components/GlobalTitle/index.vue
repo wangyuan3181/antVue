@@ -22,8 +22,8 @@ export default {
 <style lang='less' scoped>
 .title_card_contaoner {
   width: 100%;
-  margin-top: -5px;
-  margin-bottom: 20px;
+  margin-top: -15px;
+  margin-bottom: 10px;
   background: #ececec;
 }
 </style>

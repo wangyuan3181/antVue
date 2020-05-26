@@ -13,14 +13,11 @@ const RouteView = {
   render: (h) => h('router-view')
 }
 
-export const asyncRouterMap = [
-
-  {
+export const asyncRouterMap = [{
     path: '/',
     name: 'index',
     component: BasicLayout,
     meta: {
-      // title: 'menu.home'
       title: '首页'
     },
     redirect: '/dashboard/workplace',
@@ -30,7 +27,7 @@ export const asyncRouterMap = [
         redirect: '/dashboard/workplace',
         component: RouteView,
         meta: {
-          title: '仪表盘',
+          title: '监控中心',
           keepAlive: true,
           icon: bxAnaalyse,
           permission: ['dashboard']
@@ -40,7 +37,7 @@ export const asyncRouterMap = [
             name: 'Analysis',
             component: () => import('@/views/dashboard/Analysis'),
             meta: {
-              title: '分析页',
+              title: '工程总览',
               keepAlive: false,
               permission: ['dashboard']
             }
@@ -59,7 +56,7 @@ export const asyncRouterMap = [
             name: 'Workplace',
             component: () => import('@/views/dashboard/Workplace'),
             meta: {
-              title: '工作台',
+              title: '工程分布',
               keepAlive: true,
               permission: ['dashboard']
             }
@@ -67,13 +64,13 @@ export const asyncRouterMap = [
         ]
       },
 
-      // forms
+      // forms 工程管理
       {
         path: '/form',
         redirect: '/form/base-form',
         component: RouteView,
         meta: {
-          title: '表单页',
+          title: '工程管理',
           icon: 'form',
           permission: ['form']
         },
@@ -82,7 +79,7 @@ export const asyncRouterMap = [
             name: 'BaseForm',
             component: () => import('@/views/form/basicForm'),
             meta: {
-              title: '基础表单',
+              title: '工程档案',
               keepAlive: true,
               permission: ['form']
             }
@@ -92,7 +89,7 @@ export const asyncRouterMap = [
             name: 'StepForm',
             component: () => import('@/views/form/stepForm/StepForm'),
             meta: {
-              title: '分步表单',
+              title: '工程进度',
               keepAlive: true,
               permission: ['form']
             }
@@ -102,7 +99,7 @@ export const asyncRouterMap = [
             name: 'AdvanceForm',
             component: () => import('@/views/form/advancedForm/AdvancedForm'),
             meta: {
-              title: '高级表单',
+              title: '费用情况',
               keepAlive: true,
               permission: ['form']
             }
@@ -110,14 +107,14 @@ export const asyncRouterMap = [
         ]
       },
 
-      // list
+      // list 工程操作
       {
         path: '/list',
         name: 'list',
         component: RouteView,
         redirect: '/list/table-list',
         meta: {
-          title: '列表页',
+          title: '工程操作',
           icon: 'table',
           permission: ['table']
         },
@@ -127,7 +124,7 @@ export const asyncRouterMap = [
             hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
             component: () => import('@/views/list/TableList'),
             meta: {
-              title: '查询表格',
+              title: '我的任务',
               keepAlive: true,
               permission: ['table']
             }
@@ -137,7 +134,7 @@ export const asyncRouterMap = [
             name: 'BasicList',
             component: () => import('@/views/list/BasicList'),
             meta: {
-              title: '标准列表',
+              title: '工程创建',
               keepAlive: true,
               permission: ['table']
             }
@@ -194,14 +191,14 @@ export const asyncRouterMap = [
         ]
       },
 
-      // profile
+      // profile 材料管理
       {
         path: '/profile',
         name: 'profile',
         component: RouteView,
         redirect: '/profile/basic',
         meta: {
-          title: '详情页',
+          title: '材料管理',
           icon: 'profile',
           permission: ['profile']
         },
@@ -210,7 +207,7 @@ export const asyncRouterMap = [
             name: 'ProfileBasic',
             component: () => import('@/views/profile/basic'),
             meta: {
-              title: '基础详情页',
+              title: '材料汇总',
               permission: ['profile']
             }
           },
@@ -219,21 +216,30 @@ export const asyncRouterMap = [
             name: 'ProfileAdvanced',
             component: () => import('@/views/profile/advanced/Advanced'),
             meta: {
-              title: '高级详情页',
+              title: '材料料单',
               permission: ['profile']
             }
-          }
+          },
+          {
+            path: '/profile/demo',
+            name: 'ProfileDemo',
+            component: () => import('@/views/profile/advanced/Advanced'),
+            meta: {
+              title: '发料领料',
+              permission: ['profile']
+            }
+          },
         ]
       },
 
-      // result
+      // result 检查日志
       {
         path: '/result',
         name: 'result',
         component: RouteView,
         redirect: '/result/success',
         meta: {
-          title: '结果页',
+          title: '检查日志',
           icon: 'check-circle-o',
           permission: ['result']
         },
@@ -242,7 +248,7 @@ export const asyncRouterMap = [
             name: 'ResultSuccess',
             component: () => import( /* webpackChunkName: "result" */ '@/views/result/Success'),
             meta: {
-              title: '成功',
+              title: '检查报告',
               keepAlive: false,
               hiddenHeaderContent: true,
               permission: ['result']
@@ -253,7 +259,7 @@ export const asyncRouterMap = [
             name: 'ResultFail',
             component: () => import( /* webpackChunkName: "result" */ '@/views/result/Error'),
             meta: {
-              title: '失败',
+              title: '日志报告',
               keepAlive: false,
               hiddenHeaderContent: true,
               permission: ['result']
@@ -262,7 +268,7 @@ export const asyncRouterMap = [
         ]
       },
 
-      // Exception
+      // Exception 异常页
       {
         path: '/exception',
         name: 'exception',
@@ -303,7 +309,7 @@ export const asyncRouterMap = [
         ]
       },
 
-      // account
+      // account 个人设置
       {
         path: '/account',
         component: RouteView,
