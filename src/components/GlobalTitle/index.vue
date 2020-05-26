@@ -1,11 +1,15 @@
 <template>
   <div class='title_card_contaoner'>
     <a-card :bordered="false">
-      <div class='title'>{{this.$route.meta.title}}</div>
-      <!-- 类型 -->
-      <div v-for="(item,index) in 6" :key="index">
-        <a-button>{{index}}~Default~{{index}}</a-button>
-      </div>
+      <a-row :gutter='24'>
+        <a-col :xl="4" :lg="24" :md="24" :sm="24" :xs="24">
+          <div class='title'>{{this.$route.meta.title}}</div>
+        </a-col>
+        <!-- 类型 -->
+        <a-col v-for="(item,index) in 6" :key="index" :xl="3" :lg="4" :md="5" :sm="8" :xs="12">
+          <a-button>{{index}}~Default~{{index}}</a-button>
+        </a-col>
+      </a-row>
     </a-card>
   </div>
 </template>
@@ -45,6 +49,7 @@ export default {
     font-size: 18px;
     div {
       margin-left: 0.8%;
+      margin-bottom: 1px;
     }
   }
 }

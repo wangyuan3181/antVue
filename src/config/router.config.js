@@ -20,11 +20,11 @@ export const asyncRouterMap = [{
     meta: {
       title: '首页'
     },
-    redirect: '/dashboard/workplace',
+    redirect: '/monitorCenter/overview',
     children: [{
-        path: '/dashboard',
-        name: 'dashboard',
-        redirect: '/dashboard/workplace',
+        path: '/monitorCenter',
+        name: 'monitorCenter',
+        redirect: '/monitorCenter/overview',
         component: RouteView,
         meta: {
           title: '监控中心',
@@ -33,8 +33,8 @@ export const asyncRouterMap = [{
           permission: ['dashboard']
         },
         children: [{
-            path: '/dashboard/analysis/:pageNo([1-9]\\d*)?',
-            name: 'Analysis',
+            path: '/monitorCenter/overview/:pageNo([1-9]\\d*)?',
+            name: 'overview',
             component: () => import('@/views/dashboard/Analysis'),
             meta: {
               title: '工程总览',
@@ -42,19 +42,10 @@ export const asyncRouterMap = [{
               permission: ['dashboard']
             }
           },
-          // 外部链接
-          // {
-          //   path: 'https://www.baidu.com/',
-          //   name: 'Monitor',
-          //   meta: {
-          //     title: '百度',
-          //     target: '_blank'
-          //   }
-          // },
           {
-            path: '/dashboard/workplace',
-            name: 'Workplace',
-            component: () => import('@/views/dashboard/Workplace'),
+            path: '/monitorCenter/distribute',
+            name: 'distribute',
+            component: () => import('@/views/MonitorCenter/projectOverview'),
             meta: {
               title: '工程分布',
               keepAlive: true,
@@ -109,20 +100,20 @@ export const asyncRouterMap = [{
 
       // list 工程操作
       {
-        path: '/list',
-        name: 'list',
+        path: '/Operation',
+        name: 'Operation',
         component: RouteView,
-        redirect: '/list/table-list',
+        redirect: '/Operation/myTasks',
         meta: {
           title: '工程操作',
           icon: 'table',
           permission: ['table']
         },
         children: [{
-            path: '/list/table-list/:pageNo([1-9]\\d*)?',
-            name: 'TableListWrapper',
+            path: '/Operation/myTasks/:pageNo([1-9]\\d*)?',
+            name: 'myTasks',
             hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
-            component: () => import('@/views/list/TableList'),
+            component: () => import('@/views/Operation/myTasks'),
             meta: {
               title: '我的任务',
               keepAlive: true,
@@ -130,100 +121,51 @@ export const asyncRouterMap = [{
             }
           },
           {
-            path: '/list/basic-list',
-            name: 'BasicList',
-            component: () => import('@/views/list/BasicList'),
+            path: '/Operation/peojectOptions',
+            name: 'peojectOptions',
+            component: () => import('@/views/Operation/peojectOptions'),
             meta: {
               title: '工程创建',
               keepAlive: true,
               permission: ['table']
             }
-          },
-          {
-            path: '/list/card',
-            name: 'CardList',
-            component: () => import('@/views/list/CardList'),
-            meta: {
-              title: '卡片列表',
-              keepAlive: true,
-              permission: ['table']
-            }
-          },
-          {
-            path: '/list/search',
-            name: 'SearchList',
-            component: () => import('@/views/list/search/SearchLayout'),
-            redirect: '/list/search/article',
-            meta: {
-              title: '搜索列表',
-              keepAlive: true,
-              permission: ['table']
-            },
-            children: [{
-                path: '/list/search/article',
-                name: 'SearchArticles',
-                component: () => import('../views/list/search/Article'),
-                meta: {
-                  title: '搜索列表（文章）',
-                  permission: ['table']
-                }
-              },
-              {
-                path: '/list/search/project',
-                name: 'SearchProjects',
-                component: () => import('../views/list/search/Projects'),
-                meta: {
-                  title: '搜索列表（项目）',
-                  permission: ['table']
-                }
-              },
-              {
-                path: '/list/search/application',
-                name: 'SearchApplications',
-                component: () => import('../views/list/search/Applications'),
-                meta: {
-                  title: '搜索列表（应用）',
-                  permission: ['table']
-                }
-              }
-            ]
           }
         ]
       },
 
       // profile 材料管理
       {
-        path: '/profile',
-        name: 'profile',
+        path: '/StoreKeeping',
+        name: 'StoreKeeping',
         component: RouteView,
-        redirect: '/profile/basic',
+        redirect: '/StoreKeeping/materialList',
         meta: {
           title: '材料管理',
           icon: 'profile',
           permission: ['profile']
         },
         children: [{
-            path: '/profile/basic',
-            name: 'ProfileBasic',
-            component: () => import('@/views/profile/basic'),
+            path: '/StoreKeeping/materialList',
+            name: 'materialList',
+            component: () => import('@/views/StoreKeeping/materialList'),
             meta: {
               title: '材料汇总',
               permission: ['profile']
             }
           },
           {
-            path: '/profile/advanced',
-            name: 'ProfileAdvanced',
-            component: () => import('@/views/profile/advanced/Advanced'),
+            path: '/StoreKeeping/materialSummary',
+            name: 'materialSummary',
+            component: () => import('@/views/StoreKeeping/materialSummary'),
             meta: {
               title: '材料料单',
               permission: ['profile']
             }
           },
           {
-            path: '/profile/demo',
-            name: 'ProfileDemo',
-            component: () => import('@/views/profile/advanced/Advanced'),
+            path: '/StoreKeeping/sendMateria',
+            name: 'sendMateria',
+            component: () => import('@/views/StoreKeeping/sendMateria'),
             meta: {
               title: '发料领料',
               permission: ['profile']
@@ -234,19 +176,19 @@ export const asyncRouterMap = [{
 
       // result 检查日志
       {
-        path: '/result',
-        name: 'result',
+        path: '/AuditLog',
+        name: 'AuditLog',
         component: RouteView,
-        redirect: '/result/success',
+        redirect: '/AuditLog/auditReport',
         meta: {
           title: '检查日志',
           icon: 'check-circle-o',
           permission: ['result']
         },
         children: [{
-            path: '/result/success',
-            name: 'ResultSuccess',
-            component: () => import( /* webpackChunkName: "result" */ '@/views/result/Success'),
+            path: '/AuditLog/auditReport',
+            name: 'auditReport',
+            component: () => import('@/views/AuditLog/auditReport'),
             meta: {
               title: '检查报告',
               keepAlive: false,
@@ -255,9 +197,9 @@ export const asyncRouterMap = [{
             }
           },
           {
-            path: '/result/fail',
-            name: 'ResultFail',
-            component: () => import( /* webpackChunkName: "result" */ '@/views/result/Error'),
+            path: '/AuditLog/logReport',
+            name: 'logReport',
+            component: () => import('@/views/AuditLog/logReport'),
             meta: {
               title: '日志报告',
               keepAlive: false,
@@ -270,37 +212,37 @@ export const asyncRouterMap = [{
 
       // Exception 异常页
       {
-        path: '/exception',
-        name: 'exception',
+        path: '/Exception',
+        name: 'Exception',
         component: RouteView,
-        redirect: '/exception/403',
+        redirect: '/Exception/403',
         meta: {
           title: '异常页',
           icon: 'warning',
           permission: ['exception']
         },
         children: [{
-            path: '/exception/403',
+            path: '/Exception/403',
             name: 'Exception403',
-            component: () => import( /* webpackChunkName: "fail" */ '@/views/exception/403'),
+            component: () => import( /* webpackChunkName: "fail" */ '@/views/Exception/403'),
             meta: {
               title: '403',
               permission: ['exception']
             }
           },
           {
-            path: '/exception/404',
+            path: '/Exception/404',
             name: 'Exception404',
-            component: () => import( /* webpackChunkName: "fail" */ '@/views/exception/404'),
+            component: () => import( /* webpackChunkName: "fail" */ '@/views/Exception/404'),
             meta: {
               title: '404',
               permission: ['exception']
             }
           },
           {
-            path: '/exception/500',
+            path: '/Exception/500',
             name: 'Exception500',
-            component: () => import( /* webpackChunkName: "fail" */ '@/views/exception/500'),
+            component: () => import( /* webpackChunkName: "fail" */ '@/views/Exception/500'),
             meta: {
               title: '500',
               permission: ['exception']
@@ -400,69 +342,6 @@ export const asyncRouterMap = [{
           }
         ]
       }
-
-      // other
-      /*
-      {
-        path: '/other',
-        name: 'otherPage',
-        component: PageView,
-        meta: { title: '其他组件', icon: 'slack', permission: [ 'dashboard' ] },
-        redirect: '/other/icon-selector',
-        children: [
-          {
-            path: '/other/icon-selector',
-            name: 'TestIconSelect',
-            component: () => import('@/views/other/IconSelectorView'),
-            meta: { title: 'IconSelector', icon: 'tool', keepAlive: true, permission: [ 'dashboard' ] }
-          },
-          {
-            path: '/other/list',
-            component: RouteView,
-            meta: { title: '业务布局', icon: 'layout', permission: [ 'support' ] },
-            redirect: '/other/list/tree-list',
-            children: [
-              {
-                path: '/other/list/tree-list',
-                name: 'TreeList',
-                component: () => import('@/views/other/TreeList'),
-                meta: { title: '树目录表格', keepAlive: true }
-              },
-              {
-                path: '/other/list/edit-table',
-                name: 'EditList',
-                component: () => import('@/views/other/TableInnerEditList'),
-                meta: { title: '内联编辑表格', keepAlive: true }
-              },
-              {
-                path: '/other/list/user-list',
-                name: 'UserList',
-                component: () => import('@/views/other/UserList'),
-                meta: { title: '用户列表', keepAlive: true }
-              },
-              {
-                path: '/other/list/role-list',
-                name: 'RoleList',
-                component: () => import('@/views/other/RoleList'),
-                meta: { title: '角色列表', keepAlive: true }
-              },
-              {
-                path: '/other/list/system-role',
-                name: 'SystemRole',
-                component: () => import('@/views/role/RoleList'),
-                meta: { title: '角色列表2', keepAlive: true }
-              },
-              {
-                path: '/other/list/permission-list',
-                name: 'PermissionList',
-                component: () => import('@/views/other/PermissionList'),
-                meta: { title: '权限列表', keepAlive: true }
-              }
-            ]
-          }
-        ]
-      }
-      */
     ]
   },
   {
@@ -506,7 +385,7 @@ export const constantRouterMap = [{
 
   {
     path: '/404',
-    component: () => import( /* webpackChunkName: "fail" */ '@/views/exception/404')
+    component: () => import( /* webpackChunkName: "fail" */ '@/views/Exception/404')
   }
 
 ]

@@ -1,4 +1,5 @@
 <template>
+  <!-- 工程档案 -->
   <a-row class='manageRecord_container' :gutter="24">
     <a-col :lg="8" :xs='24'>
       <a-card :bordered="false" style="width: 100%">

@@ -1,14 +1,21 @@
 <template>
-  <div :class="wrpCls" class='right_content'>
+  <a-row :gutter='24' :class="wrpCls" class='right_content'>
     <!-- 面包屑 -->
-    <global-breadcrumb class='global_breadcrumb' />
+    <a-col :xl="19" :lg="16" :md="15" :sm="14" :xs="8">
+      <global-breadcrumb class='global_breadcrumb' />
+    </a-col>
     <!-- 徽标 -->
-    <info-badge :class="prefixCls" class='info_badge' />
+    <a-col :xl="2" :lg="2" :md="3" :sm="3" :xs="8">
+      <info-badge :class="prefixCls" class='info_badge' />
+    </a-col>
     <!-- 头像 -->
-    <avatar-dropdown :menu="showMenu" :current-user="currentUser" :class="prefixCls" class='avatar_dropdown' />
+    <a-col :xl="3" :lg="7" :md="6" :sm="7" :xs="8">
+      <avatar-dropdown :menu="showMenu" :current-user="currentUser" :class="prefixCls" class='avatar_dropdown' />
+    </a-col>
     <!-- 控制语言 -->
     <!-- <select-lang :class="prefixCls" /> -->
-  </div>
+    <!-- </div> -->
+  </a-row>
 </template>
 
 <script>
