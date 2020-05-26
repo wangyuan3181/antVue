@@ -11,7 +11,9 @@
     <template v-slot:footerRender>
       <global-footer />
     </template>
-    <!-- 主题内容title -->
+    <!-- tabs 导航条 -->
+    <MultiTab />
+    <!-- title 主题内容 -->
     <template v-if="true">
       <GlobalTitle></GlobalTitle>
     </template>
@@ -26,6 +28,7 @@ import { i18nRender } from '@/locales'
 import { mapState } from 'vuex'
 import { SIDEBAR_TYPE, TOGGLE_MOBILE_TYPE } from '@/store/mutation-types'
 
+import MultiTab from '@/components/MultiTab/MultiTab'
 import GlobalTitle from '@/components/GlobalTitle'
 import RightContent from '@/components/GlobalHeader/RightContent'
 import GlobalFooter from '@/components/GlobalFooter'
@@ -37,7 +40,8 @@ export default {
     SettingDrawer,
     GlobalTitle,
     RightContent,
-    GlobalFooter
+    GlobalFooter,
+    MultiTab
   },
   data() {
     return {

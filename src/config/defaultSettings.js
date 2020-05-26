@@ -26,7 +26,7 @@ export default {
     locale: true
   },
   title: '工程管理系统',
-  multiTab: false,
+  multiTab: true,
   pwa: false,
   iconfontUrl: '',
   production: process.env.NODE_ENV === 'production' && process.env.VUE_APP_PREVIEW !== 'true'

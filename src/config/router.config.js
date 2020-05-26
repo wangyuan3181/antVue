@@ -66,42 +66,42 @@ export const asyncRouterMap = [{
 
       // forms 工程管理
       {
-        path: '/form',
-        redirect: '/form/base-form',
+        path: '/Management',
+        redirect: '/Management/manageRecord',
         component: RouteView,
         meta: {
           title: '工程管理',
           icon: 'form',
-          permission: ['form']
+          permission: ['management']
         },
         children: [{
-            path: '/form/base-form',
+            path: '/Management/manageRecord',
             name: 'BaseForm',
-            component: () => import('@/views/form/basicForm'),
+            component: () => import('@/views/Management/manageRecord'),
             meta: {
               title: '工程档案',
               keepAlive: true,
-              permission: ['form']
+              permission: ['management']
             }
           },
           {
-            path: '/form/step-form',
+            path: '/Management/manageProgress',
             name: 'StepForm',
-            component: () => import('@/views/form/stepForm/StepForm'),
+            component: () => import('@/views/Management/manageProgress'),
             meta: {
               title: '工程进度',
               keepAlive: true,
-              permission: ['form']
+              permission: ['management']
             }
           },
           {
-            path: '/form/advanced-form',
+            path: '/Management/costSituation',
             name: 'AdvanceForm',
-            component: () => import('@/views/form/advancedForm/AdvancedForm'),
+            component: () => import('@/views/Management/costSituation'),
             meta: {
               title: '费用情况',
               keepAlive: true,
-              permission: ['form']
+              permission: ['management']
             }
           }
         ]

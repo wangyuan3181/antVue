@@ -1,5 +1,7 @@
 import Mock from 'mockjs2'
-import { builder } from '../util'
+import {
+  builder
+} from '../util'
 
 const info = (options) => {
   console.log('options', options)
@@ -167,7 +169,7 @@ const info = (options) => {
       'dataAccess': null
     }, {
       'roleId': 'admin',
-      'permissionId': 'form',
+      'permissionId': 'management',
       'permissionName': '表单权限',
       'actions': '[{"action":"add","defaultCheck":false,"describe":"新增"},{"action":"get","defaultCheck":false,"describe":"详情"},{"action":"query","defaultCheck":false,"describe":"查询"},{"action":"update","defaultCheck":false,"describe":"修改"},{"action":"delete","defaultCheck":false,"describe":"删除"}]',
       'actionEntitySet': [{
@@ -430,18 +432,18 @@ const userNav = (options) => {
 
     // form
     {
-      'name': 'form',
+      'name': 'management',
       'parentId': 0,
       'id': 10,
       'meta': {
         'icon': 'form',
         'title': '表单页'
       },
-      'redirect': '/form/base-form',
+      'redirect': '/management/manageRecord',
       'component': 'PageView'
     },
     {
-      'name': 'basic-form',
+      'name': 'manageProgress',
       'parentId': 10,
       'id': 6,
       'meta': {
@@ -450,22 +452,13 @@ const userNav = (options) => {
       'component': 'BasicForm'
     },
     {
-      'name': 'step-form',
+      'name': 'costSituation',
       'parentId': 10,
       'id': 5,
       'meta': {
         'title': '分步表单'
       },
       'component': 'StepForm'
-    },
-    {
-      'name': 'advanced-form',
-      'parentId': 10,
-      'id': 4,
-      'meta': {
-        'title': '高级表单'
-      },
-      'component': 'AdvanceForm'
     },
 
     // list
