@@ -12,7 +12,9 @@
       <global-footer />
     </template>
     <!-- 主题内容title -->
-
+    <template v-if="true">
+      <GlobalTitle></GlobalTitle>
+    </template>
     <!-- 主体内容 -->
     <router-view />
   </pro-layout>
@@ -24,6 +26,7 @@ import { i18nRender } from '@/locales'
 import { mapState } from 'vuex'
 import { SIDEBAR_TYPE, TOGGLE_MOBILE_TYPE } from '@/store/mutation-types'
 
+import GlobalTitle from '@/components/GlobalTitle'
 import RightContent from '@/components/GlobalHeader/RightContent'
 import GlobalFooter from '@/components/GlobalFooter'
 import LogoSvg from '@/assets/icons/logo.svg?inline'
@@ -32,6 +35,7 @@ export default {
   name: 'BasicLayout',
   components: {
     SettingDrawer,
+    GlobalTitle,
     RightContent,
     GlobalFooter
   },
