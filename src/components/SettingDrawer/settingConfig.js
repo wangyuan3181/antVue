@@ -1,5 +1,5 @@
 import message from 'ant-design-vue/es/message'
-// import defaultSettings from '../defaultSettings';
+// import defaultSettings from '../defaultSettings'
 import themeColor from './themeColor.js'
 
 // let lessNodesAppended

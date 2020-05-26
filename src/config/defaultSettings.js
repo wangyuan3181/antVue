@@ -14,18 +14,18 @@
  */
 
 export default {
-  navTheme: 'dark', // theme for nav menu
-  primaryColor: '#52C41A', // primary color of ant design
-  layout: 'sidemenu', // nav menu position: `sidemenu` or `topmenu`
-  contentWidth: 'Fixed', // layout of content: `Fluid` or `Fixed`, only works when layout is topmenu
-  fixedHeader: false, // sticky header
-  autoHideHeader: false, //  auto hide header
-  fixSiderbar: false, // sticky siderbar
-  colorWeak: false,
+  navTheme: 'dark', // 导航菜单的主题
+  primaryColor: '#52C41A', // 默认主题色
+  layout: 'sidemenu', // 导航菜单位置:“sidemenu”或“topmenu”
+  contentWidth: 'Fixed', // 内容区布局： 流式 |  固定
+  fixedHeader: true, // 固定头部
+  fixSiderbar: true, // 固定左侧菜单栏
+  autoHideHeader: false, //  向下滚动时，隐藏 Header : boolean
+  colorWeak: false, // 色盲模式
   menu: {
     locale: true
   },
-  title: 'Ant Design Pro',
+  title: '工程管理系统',
   multiTab: false,
   pwa: false,
   iconfontUrl: '',

@@ -50,10 +50,9 @@ export default {
         theme: 'dark',
         // 主色调
         primaryColor: '#1890ff',
-        fixedHeader: false,
-        fixSiderbar: false,
+        fixedHeader: true,
+        fixSiderbar: true,
         colorWeak: false,
-
         hideHintAlert: false,
         hideCopyButton: false
       },

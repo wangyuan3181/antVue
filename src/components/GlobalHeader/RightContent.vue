@@ -71,20 +71,18 @@ export default {
 .right_content {
   display: flex;
   flex-direction: row;
-  width: 93%;
+  width: 92%;
 }
 .global_breadcrumb {
   height: 100%;
-  flex: 8;
+  width: 100%;
 }
 .info_badge {
   width: 50px;
   height: 100%;
-  flex: 1;
   text-align: right;
 }
 .avatar_dropdown {
   width: 120px;
-  flex: 1;
 }
 </style>
