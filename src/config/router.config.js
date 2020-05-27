@@ -20,11 +20,11 @@ export const asyncRouterMap = [{
     meta: {
       title: '首页'
     },
-    redirect: '/monitorCenter/overview',
+    redirect: '/Home/overview',
     children: [{
-        path: '/monitorCenter',
-        name: 'monitorCenter',
-        redirect: '/monitorCenter/overview',
+        path: '/Home',
+        name: 'Home',
+        redirect: '/Home/overview',
         component: RouteView,
         meta: {
           title: '监控中心',
@@ -33,9 +33,9 @@ export const asyncRouterMap = [{
           permission: ['dashboard']
         },
         children: [{
-            path: '/monitorCenter/overview/:pageNo([1-9]\\d*)?',
+            path: '/Home/overview/:pageNo([1-9]\\d*)?',
             name: 'overview',
-            component: () => import('@/views/dashboard/Analysis'),
+            component: () => import('@/views/Home/projectOverview'),
             meta: {
               title: '工程总览',
               keepAlive: false,
@@ -43,9 +43,9 @@ export const asyncRouterMap = [{
             }
           },
           {
-            path: '/monitorCenter/distribute',
+            path: '/Home/distribute',
             name: 'distribute',
-            component: () => import('@/views/MonitorCenter/projectOverview'),
+            component: () => import('@/views/Home/projectDistribute'),
             meta: {
               title: '工程分布',
               keepAlive: true,

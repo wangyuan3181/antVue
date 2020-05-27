@@ -10,10 +10,10 @@ const components = {
 const locale = {
   'message': '-',
   'menu.home': '主页',
-  'menu.dashboard': '仪表盘',
-  'menu.dashboard.analysis': '分析页',
-  'menu.dashboard.monitor': '监控页',
-  'menu.dashboard.workplace': '工作台',
+  // 'menu.home': '首页',
+  'menu.home.analysis': '工程总览',
+  'menu.home.monitor': '监控页',
+  'menu.home.workplace': '工程分布',
 
   'layouts.usermenu.dialog.title': '消息',
   'layouts.usermenu.dialog.content': '你真的注销了吗！',

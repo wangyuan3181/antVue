@@ -21,7 +21,7 @@ NProgress.configure({
 
 const whiteList = ['login', 'register', 'registerResult'] // 没有重定向白名单
 const loginRoutePath = '/user/login'
-const defaultRoutePath = '/dashboard/workplace'
+const defaultRoutePath = '/Home/overview' // 首页 总览
 
 router.beforeEach((to, from, next) => {
   NProgress.start() // 开始进度条
