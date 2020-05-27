@@ -33,7 +33,7 @@ export const asyncRouterMap = [{
           permission: ['dashboard']
         },
         children: [{
-            path: '/Home/overview/:pageNo([1-9]\\d*)?',
+            path: '/Home/overview',
             name: 'overview',
             component: () => import('@/views/Home/projectOverview'),
             meta: {

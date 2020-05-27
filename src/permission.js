@@ -94,11 +94,11 @@ router.beforeEach((to, from, next) => {
           redirect: to.fullPath
         }
       })
-      NProgress.done() // if current page is login will not trigger afterEach hook, so manually handle it
+      NProgress.done() // 如果当前页面是登录将不会触发后每个钩子，所以手动处理它
     }
   }
 })
 
 router.afterEach(() => {
-  NProgress.done() // finish progress bar
+  NProgress.done() // 完成进度条
 })

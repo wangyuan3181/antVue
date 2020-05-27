@@ -22,7 +22,7 @@
       <a-popconfirm :visible="visible2" @confirm="confirm2" @cancel="() => visible2 = false" okText="确定" cancelText="取消">
         <template v-slot:title>
           <div>
-            <p>页面 KEY 是由页面的路由 <code>path</code> 决定的</p>
+            <p>页面 KEY 是由页面的 <code>path</code> 决定的</p>
             <p>如果要修改某一个页面标题，该页面必须已经被打开在 Tab 栏</p>
             <p>后期可以考虑优化到编程式 Tab 栏，就可以没有这种限制</p>
             <a-form :form="form2" layout="inline">

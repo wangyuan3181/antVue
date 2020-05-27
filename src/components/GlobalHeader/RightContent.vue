@@ -1,15 +1,15 @@
 <template>
   <a-row :gutter='24' :class="wrpCls" class='right_content'>
     <!-- 面包屑 -->
-    <a-col :xl="19" :lg="16" :md="15" :sm="14" :xs="8">
+    <a-col :xl="19" :lg="16" :md="16" :sm="12" :xs="0">
       <global-breadcrumb class='global_breadcrumb' />
     </a-col>
     <!-- 徽标 -->
-    <a-col :xl="2" :lg="2" :md="3" :sm="3" :xs="8">
+    <a-col :xl="2" :lg="2" :md="2" :sm="4" :xs="8">
       <info-badge :class="prefixCls" class='info_badge' />
     </a-col>
     <!-- 头像 -->
-    <a-col :xl="3" :lg="7" :md="6" :sm="7" :xs="8">
+    <a-col :xl="3" :lg="6" :md="6" :sm="8" :xs="16">
       <avatar-dropdown :menu="showMenu" :current-user="currentUser" :class="prefixCls" class='avatar_dropdown' />
     </a-col>
     <!-- 控制语言 -->
@@ -78,18 +78,30 @@ export default {
 .right_content {
   display: flex;
   flex-direction: row;
-  width: 92%;
+  width: calc(100% - 56px - 68px);
+  margin-right: 4% !important;
 }
 .global_breadcrumb {
   height: 100%;
   width: 100%;
 }
 .info_badge {
-  width: 50px;
+  min-width: 50px;
   height: 100%;
   text-align: right;
 }
 .avatar_dropdown {
-  width: 120px;
+  min-width: 120px;
+  text-align: center;
+}
+</style>
+
+<style lang="less">
+.ant-pro-global-header-trigger {
+  position: absolute;
+  height: 64px;
+  line-height: 26px;
+  // top: 3px;
+  z-index: 999;
 }
 </style>
