@@ -49,16 +49,27 @@ export default {
     handleToSettings() {
       this.$router.push({ path: '/account/settings' })
     },
+    // 退出登录
     handleLogout(e) {
+      let self = this
       Modal.confirm({
-        title: this.$t('layouts.usermenu.dialog.title'),
-        content: this.$t('layouts.usermenu.dialog.content'),
+        title: self.$t('layouts.usermenu.dialog.title'),
+        content: self.$t('layouts.usermenu.dialog.content'),
         onOk: () => {
           return new Promise((resolve, reject) => {
-            setTimeout(Math.random() > 0.5 ? resolve : reject, 1500)
-          }).catch(() => console.log('Oops errors!'))
+            // 判断登录状态
+            setTimeout(true ? resolve : reject, 1111)
+          })
+            .then(resolve => {
+              console.log('一顿操作退出登录')
+            })
+            .catch(reject => {
+              console.log(reject, 'Oops errors!')
+            })
         },
-        onCancel() {}
+        onCancel() {
+          self.$message.info('你点击了取消！', 1)
+        }
       })
     }
   }

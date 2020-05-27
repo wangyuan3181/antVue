@@ -3,7 +3,7 @@ import VueI18n from 'vue-i18n'
 import storage from 'store'
 import moment from 'moment'
 
-// default lang
+// 默认语言
 import zhCN from './lang/zh-CN'
 
 Vue.use(VueI18n)

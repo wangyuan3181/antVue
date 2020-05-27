@@ -210,12 +210,13 @@ export const asyncRouterMap = [{
         ]
       },
 
-      // Exception 异常页
+      // Exception 异常页 
       {
         path: '/Exception',
         name: 'Exception',
         component: RouteView,
         redirect: '/Exception/403',
+        hidden: true, // 错误提示页 侧边栏隐藏
         meta: {
           title: '异常页',
           icon: 'warning',
@@ -257,6 +258,7 @@ export const asyncRouterMap = [{
         component: RouteView,
         redirect: '/account/center',
         name: 'account',
+        hidden: true, // 个人页侧边栏隐藏
         meta: {
           title: '个人页',
           icon: 'user',
@@ -384,8 +386,14 @@ export const constantRouterMap = [{
   },
 
   {
+    path: '/403',
+    component: () => import('@/views/Exception/403')
+  }, {
     path: '/404',
-    component: () => import( /* webpackChunkName: "fail" */ '@/views/Exception/404')
+    component: () => import('@/views/Exception/404')
+  }, {
+    path: '/500',
+    component: () => import('@/views/Exception/500')
   }
 
 ]

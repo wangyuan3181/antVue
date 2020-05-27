@@ -15,8 +15,9 @@ const locale = {
   'menu.home.monitor': '监控页',
   'menu.home.workplace': '工程分布',
 
-  'layouts.usermenu.dialog.title': '消息',
-  'layouts.usermenu.dialog.content': '你真的注销了吗！',
+  // 退出登录 文本
+  'layouts.usermenu.dialog.title': '提示',
+  'layouts.usermenu.dialog.content': '您确定退出登录吗？',
 
   'app.setting.pagestyle': '页面风格设置',
   'app.setting.pagestyle.light': '白昼',
