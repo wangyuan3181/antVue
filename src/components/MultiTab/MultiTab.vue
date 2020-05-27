@@ -12,7 +12,7 @@ export default {
     }
   },
   created() {
-    // bind event
+    // 绑定事件
     events
       .$on('open', val => {
         if (!val) {
@@ -35,7 +35,6 @@ export default {
           this.$forceUpdate()
         } catch (e) {}
       })
-
     this.pages.push(this.$route)
     this.fullPathList.push(this.$route.fullPath)
     this.selectedLastPath()
@@ -55,8 +54,7 @@ export default {
     selectedLastPath() {
       this.activeKey = this.fullPathList[this.fullPathList.length - 1]
     },
-
-    // content menu
+    // 内容菜单
     closeThat(e) {
       // 判断是否为最后一个标签页，如果是最后一个，则无法被关闭
       if (this.fullPathList.length > 1) {
@@ -121,7 +119,6 @@ export default {
     // render
     renderTabPane(title, keyPath) {
       const menu = this.renderTabPaneMenu(keyPath)
-
       return (
         <a-dropdown overlay={menu} trigger={['contextmenu']}>
           <span style={{ userSelect: 'none' }}>{title}</span>
@@ -156,7 +153,6 @@ export default {
         ></a-tab-pane>
       )
     })
-
     return (
       <div class="ant-pro-multi-tab">
         <div class="ant-pro-multi-tab-wrapper">

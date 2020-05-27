@@ -6,7 +6,7 @@
     </a-col>
     <!-- 徽标 -->
     <a-col :xl="2" :lg="2" :md="2" :sm="4" :xs="8">
-      <info-badge :class="prefixCls" class='info_badge' />
+      <notice-icon :class="prefixCls" class='info_badge'></notice-icon>
     </a-col>
     <!-- 头像 -->
     <a-col :xl="3" :lg="6" :md="6" :sm="8" :xs="16">
@@ -21,16 +21,16 @@
 <script>
 import GlobalBreadcrumb from './GlobalBreadcrumb'
 import AvatarDropdown from './AvatarDropdown'
-import InfoBadge from './InfoBadge'
 import SelectLang from '@/components/SelectLang'
+import NoticeIcon from '@/components/NoticeIcon'
 
 export default {
   name: 'RightContent',
   components: {
     GlobalBreadcrumb,
     AvatarDropdown,
-    InfoBadge,
-    SelectLang
+    SelectLang,
+    NoticeIcon
   },
   props: {
     prefixCls: {
@@ -88,6 +88,7 @@ export default {
 .info_badge {
   min-width: 50px;
   height: 100%;
+  padding-left: 0px !important;
   text-align: right;
 }
 .avatar_dropdown {

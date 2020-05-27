@@ -1,5 +1,6 @@
 <template>
-  <a-popover v-model="visible" trigger="click" placement="bottomRight" overlayClassName="header-notice-wrapper" :getPopupContainer="() => $refs.noticeRef.parentElement" :autoAdjustOverflow="true" :arrowPointAtCenter="true" :overlayStyle="{ width: '300px', top: '50px' }">
+  <!-- trigger="click" placement="bottomRight" overlayClassName="header-notice-wrapper" :getPopupContainer="() => $refs.noticeRef.parentElement" :autoAdjustOverflow="true" :arrowPointAtCenter="true" :overlayStyle="{ width: '300px', top: '50px' }" -->
+  <a-popover v-model="visible" placement="bottomRight">
     <template slot="content">
       <a-spin :spinning="loading">
         <a-tabs>
@@ -28,6 +29,9 @@
           <a-tab-pane tab="待办" key="3">
             123
           </a-tab-pane>
+          <a-tab-pane tab="设置" key="4">
+            123
+          </a-tab-pane>
         </a-tabs>
       </a-spin>
     </template>
@@ -50,6 +54,8 @@ export default {
   },
   methods: {
     fetchNotice() {
+      console.log('ewweew', this.visible)
+
       if (!this.visible) {
         this.loading = true
         setTimeout(() => {
@@ -64,11 +70,6 @@ export default {
 }
 </script>
 
-<style lang="css">
-.header-notice-wrapper {
-  top: 50px !important;
-}
-</style>
 <style lang="less" scoped>
 .header-notice {
   display: inline-block;
@@ -77,5 +78,11 @@ export default {
   span {
     vertical-align: initial;
   }
+}
+</style>
+
+<style lang="css">
+.header-notice-wrapper {
+  top: 50px !important;
 }
 </style>

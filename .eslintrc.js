@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2019-12-19 19:04:41
- * @LastEditTime: 2019-12-20 13:33:54
- * @LastEditors: your name
- * @Description: In User Settings Edit
- * @FilePath: \atm\Gaea\.eslintrc.js
- */
 module.exports = {
   root: true, // 根目录的配置文件， 编辑器会由当前目录向上查找， 如果找到 `roor = true`的文件， 则不再查找
   env: {

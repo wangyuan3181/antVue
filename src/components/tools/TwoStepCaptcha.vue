@@ -10,7 +10,6 @@
         </a-button>
       </div>
     </template>
-
     <a-spin :spinning="stepLoading">
       <a-form layout="vertical" :auto-form-create="(form)=>{this.form = form}">
         <div class="step-form-wrapper">

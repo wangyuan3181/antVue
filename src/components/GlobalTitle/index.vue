@@ -33,7 +33,6 @@ export default {
   margin-top: -15px;
   margin-bottom: 10px;
   background: #ececec;
-
   .title {
     font-size: 18px;
     font-weight: 550;

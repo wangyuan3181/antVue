@@ -3,13 +3,13 @@
     <div class="container">
       <div class="top">
         <div class="header">
-          <a href="/">
+          <a href="#">
             <img src="~@/assets/icons/logo.svg" class="logo" alt="logo">
-            <span class="title">Ant Design</span>
+            <span class="title">杭州蒲菲特</span>
           </a>
         </div>
         <div class="desc">
-          Ant Design 是西湖区最具影响力的 Web 设计规范
+          xxxxxxxxxxxxx，yyyyyyyyyyyy
         </div>
       </div>
 
@@ -17,12 +17,12 @@
 
       <div class="footer">
         <div class="links">
-          <a href="_self">帮助</a>
-          <a href="_self">隐私</a>
-          <a href="_self">条款</a>
+          <a href="#">帮助</a>
+          <a href="#">隐私</a>
+          <a href="#">条款</a>
         </div>
         <div class="copyright">
-          Copyright &copy; 2018 vueComponent
+          Copyright &copy; 2020 杭州蒲菲特
         </div>
       </div>
     </div>

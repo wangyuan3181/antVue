@@ -5,8 +5,8 @@ if (IS_PROD) {
   plugins.push('transform-remove-console')
 }
 
-// lazy load ant-design-vue
-// if your use import on Demand, Use this code
+// 延迟加载ant-design-vue
+// 如果您使用的是按需导入，请使用此代码
 plugins.push(['import', {
   'libraryName': 'ant-design-vue',
   'libraryDirectory': 'es',

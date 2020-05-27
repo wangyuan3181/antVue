@@ -13,7 +13,7 @@
     </template>
     <!-- tabs 导航条 -->
     <MultiTab />
-    <!-- title 主题内容 -->
+    <!-- title 主体内容 -->
     <template v-if="true">
       <GlobalTitle></GlobalTitle>
     </template>

@@ -2,19 +2,20 @@
   <div class="main">
     <a-form id="formLogin" class="user-layout-login" ref="formLogin" :form="form" @submit="handleSubmit">
       <a-tabs :activeKey="customActiveKey" :tabBarStyle="{ textAlign: 'center', borderBottom: 'unset' }" @change="handleTabClick">
+        <!-- 账号密码登录 -->
         <a-tab-pane key="tab1" tab="账号密码登录">
-          <a-alert v-if="isLoginError" type="error" showIcon style="margin-bottom: 24px;" message="账户或密码错误（admin/ant.design )" />
+          <a-alert v-if="isLoginError" type="error" showIcon style="margin-bottom: 24px;" message="账户或密码错误" />
           <a-form-item>
-            <a-input size="large" type="text" placeholder="账户: admin" v-decorator="[
+            <a-input size="large" type="text" placeholder="请输入用户名" v-decorator="[
                 'username',
-                {rules: [{ required: true, message: '请输入帐户名或邮箱地址' }, { validator: handleUsernameOrEmail }], validateTrigger: 'change'}
+                {rules: [{ required: true, message: '请输入用户名' }, 
+                { validator: handleUsernameOrEmail }], validateTrigger: 'change'}
               ]">
               <a-icon slot="prefix" type="user" :style="{ color: 'rgba(0,0,0,.25)' }" />
             </a-input>
           </a-form-item>
-
           <a-form-item>
-            <a-input size="large" type="password" autocomplete="false" placeholder="密码: admin or ant.design" v-decorator="[
+            <a-input size="large" type="password" autocomplete="false" placeholder="请输入密码" v-decorator="[
                 'password',
                 {rules: [{ required: true, message: '请输入密码' }], validateTrigger: 'blur'}
               ]">
@@ -22,13 +23,13 @@
             </a-input>
           </a-form-item>
         </a-tab-pane>
+        <!-- 手机号登录 -->
         <a-tab-pane key="tab2" tab="手机号登录">
           <a-form-item>
             <a-input size="large" type="text" placeholder="手机号" v-decorator="['mobile', {rules: [{ required: true, pattern: /^1[34578]\d{9}$/, message: '请输入正确的手机号' }], validateTrigger: 'change'}]">
               <a-icon slot="prefix" type="mobile" :style="{ color: 'rgba(0,0,0,.25)' }" />
             </a-input>
           </a-form-item>
-
           <a-row :gutter="16">
             <a-col class="gutter-row" :span="16">
               <a-form-item>
@@ -43,16 +44,16 @@
           </a-row>
         </a-tab-pane>
       </a-tabs>
-
+      <!-- 自动登录 -->
       <a-form-item>
         <a-checkbox v-decorator="['rememberMe', { valuePropName: 'checked' }]">自动登录</a-checkbox>
         <router-link :to="{ name: 'recover', params: { user: 'aaa'} }" class="forge-password" style="float: right;">忘记密码</router-link>
       </a-form-item>
-
+      <!-- 登录按钮 -->
       <a-form-item style="margin-top:24px">
         <a-button size="large" type="primary" htmlType="submit" class="login-button" :loading="state.loginBtn" :disabled="state.loginBtn">确定</a-button>
       </a-form-item>
-
+      <!-- 其他登录方式 -->
       <div class="user-login-other">
         <span>其他登录方式</span>
         <a>
@@ -67,7 +68,6 @@
         <router-link class="register" :to="{ name: 'register' }">注册账户</router-link>
       </div>
     </a-form>
-
     <two-step-captcha v-if="requiredTwoStepCaptcha" :visible="stepCaptchaVisible" @success="stepCaptchaSuccess" @cancel="stepCaptchaCancel"></two-step-captcha>
   </div>
 </template>
@@ -211,18 +211,7 @@ export default {
       })
     },
     loginSuccess(res) {
-      console.log(res)
-      // check res.homePage define, set $router.push name res.homePage
-      // Why not enter onComplete
-      /*
-      this.$router.push({ name: 'analysis' }, () => {
-        console.log('onComplete')
-        this.$notification.success({
-          message: '欢迎',
-          description: `${timeFix()}，欢迎回来`
-        })
-      })
-      */
+      console.log('loginSuccess', res)
       this.$router.push({ path: '/' })
       // 延迟 1 秒显示欢迎信息
       setTimeout(() => {
